@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <title>Color picker</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Fredoka One', cursive;
+            user-select: none;
+        }
+        
+        #disply {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            background-color: rgb(0, 0, 0);
+        }
+        
+        .box {
+            background-color: white;
+            border: 1px solid;
+            border-radius: 20px;
+            position: absolute;
+            width: 350px;
+            top: 30px;
+            left: 50%;
+            transform: translate(-50%);
+            text-align: center;
+            line-height: 35px;
+            border-color: white;
+        }
+        
+        .range {
+            padding: 20px;
+        }
+        
+        .s1 {
+            appearance: none;
+            width: 100%;
+            height: 22px;
+            background: rgb(255, 0, 0);
+            opacity: 1;
+            border-radius: 20px;
+        }
+        
+        .s1::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fdfdfd;
+            opacity: 1;
+            cursor: pointer;
+        }
+        
+        .s2 {
+            appearance: none;
+            width: 100%;
+            height: 22px;
+            background: rgb(84, 168, 45);
+            opacity: 1;
+            border-radius: 20px;
+        }
+        
+        .s2::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fdfdfd;
+            opacity: 1;
+            cursor: pointer;
+        }
+        
+        .s3 {
+            appearance: none;
+            width: 100%;
+            height: 22px;
+            background: rgb(0, 4, 255);
+            opacity: 1;
+            border-radius: 20px;
+        }
+        
+        .s3::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fdfdfd;
+            opacity: 1;
+            cursor: pointer;
+        }
+        
+        .values {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="disply">
+        <div class="box">
+            <div class="range">
+                <input type="range" id="r" min="0" max="255" class="s1" value="0"><br>
+                <input type="range" id="g" min="0" max="255" class="s2" value="0"><br>
+                <input type="range" id="b" min="0" max="255" class="s3" value="0"><br>
+                <div class="values">
+                    <h1>R : <span class="value-of-r">0</span></h1>
+                    <h1>G : <span class="value-of-g">0</span></h1>
+                    <h1>B : <span class="value-of-b">0</span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let input = document.querySelectorAll('input');
+        for (let i = 0; i < input.length; i++) {
+            input[i].addEventListener("input", function() {
+                var r = document.getElementById('r').value,
+                    g = document.getElementById('g').value,
+                    b = document.getElementById('b').value;
+                var disply = document.getElementById('disply');
+                disply.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+                document.querySelector('.value-of-r').innerHTML = r;
+                document.querySelector('.value-of-g').innerHTML = g;
+                document.querySelector('.value-of-b').innerHTML = b;
+            })
+
+        }
+    </script>
+</body>
+
+</html>
